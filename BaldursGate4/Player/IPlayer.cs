@@ -1,6 +1,6 @@
-﻿using BaldursGate4.Weapon;
+﻿using GitGate4.Weapon;
 
-namespace BaldursGate4.Player
+namespace GitGate4.Player
 {
     public interface IPlayer : IPlayerStats
     {

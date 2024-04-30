@@ -1,4 +1,4 @@
-﻿namespace BaldursGate4.Enemy
+﻿namespace GitGate4.Enemy
 {
     public class CriticalMonster : EnemyCharacter
     {

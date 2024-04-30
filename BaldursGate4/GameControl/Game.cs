@@ -1,9 +1,9 @@
-﻿using BaldursGate4.Enemy;
-using BaldursGate4.Factory;
-using BaldursGate4.Logger;
-using BaldursGate4.Player;
+﻿using GitGate4.Enemy;
+using GitGate4.Factory;
+using GitGate4.Logger;
+using GitGate4.Player;
 
-namespace BaldursGate4.GameControl
+namespace GitGate4.GameControl
 {
     public class Game : IGame
     {
@@ -19,7 +19,7 @@ namespace BaldursGate4.GameControl
         {
             var racesCount = Enum.GetNames(typeof(Races)).Length + 1;
             RaceName = (Races)random.Next(1, racesCount);
-            CharacterCreator creator = new CharacterCreator();
+            ICharacterCreator creator = new CharacterCreator();
             Player = creator.Create(RaceName);
         }
         public void StoryTelling()
@@ -36,10 +36,9 @@ namespace BaldursGate4.GameControl
             int killCount = 0;
             while (Player.Hitpoints > 0)
             {
-
                 var monsterCount = Enum.GetNames(typeof(EnemyTypes)).Length + 1;
                 EnemyTypes enemyName = (EnemyTypes)random.Next(1, monsterCount);
-                EnemyCreator enemyCreator = new EnemyCreator();
+                IEnemyCreator enemyCreator = new EnemyCreator();
                 IEnemy enemy = enemyCreator.Create(enemyName);
 
                 logger.DisplayMessage($"You encounter a wild {enemy.Name}, it has {enemy.Hitpoints} hitpoints.");

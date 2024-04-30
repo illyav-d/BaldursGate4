@@ -1,4 +1,4 @@
-﻿namespace BaldursGate4.Weapon
+﻿namespace GitGate4.Weapon
 {
     public class Longsword : IWeapon
     {

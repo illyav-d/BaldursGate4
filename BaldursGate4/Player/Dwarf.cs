@@ -1,4 +1,4 @@
-﻿namespace BaldursGate4.Player
+﻿namespace GitGate4.Player
 {
     public class Dwarf : PlayerCharacter
     {

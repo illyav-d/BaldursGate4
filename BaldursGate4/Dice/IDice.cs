@@ -1,5 +1,5 @@
 ﻿
-namespace BaldursGate4.Dice
+namespace GitGate4.Dice
 {
     public interface IDice
     {

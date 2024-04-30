@@ -1,8 +1,8 @@
-﻿using BaldursGate4.Player;
+﻿using GitGate4.Player;
 
-namespace BaldursGate4.Factory
+namespace GitGate4.Factory
 {
-    internal class CharacterCreator
+    internal class CharacterCreator : ICharacterCreator
     {
         public IPlayer Create(Races Race)
         {

@@ -1,10 +1,9 @@
-﻿using BaldursGate4.GameControl;
+﻿using GitGate4.GameControl;
 
-namespace BaldursGate4
+namespace GitGate4
 {
     internal class Program
     {
-
         static void Main(string[] args)
         {
             //Variables
@@ -21,6 +20,3 @@ namespace BaldursGate4
         }
     }
 }
-//TODO : Game Interface -> DONE
-//TODO : Interface voor Factories -> I DONT GET
-//TODO : Weaponpickup in Progression -> DONE

@@ -1,13 +1,13 @@
-﻿using BaldursGate4.Dice;
-using BaldursGate4.Logger;
-using BaldursGate4.Weapon;
+﻿using GitGate4.Dice;
+using GitGate4.Logger;
+using GitGate4.Weapon;
 
-namespace BaldursGate4.Player
+namespace GitGate4.Player
 {
     public class PlayerCharacter : IPlayer
     {
         protected IDice dice;
-        protected ConsoleLogger _logger = new ConsoleLogger();
+        protected IConsoleLogger _logger = new ConsoleLogger();
 
         public PlayerCharacter()
         {

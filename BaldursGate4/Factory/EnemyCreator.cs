@@ -1,8 +1,8 @@
-﻿using BaldursGate4.Enemy;
+﻿using GitGate4.Enemy;
 
-namespace BaldursGate4.Factory
+namespace GitGate4.Factory
 {
-    public class EnemyCreator
+    public class EnemyCreator : IEnemyCreator
     {
         public IEnemy Create(EnemyTypes enemy)
         {

@@ -1,13 +1,13 @@
-﻿using BaldursGate4.Factory;
-using BaldursGate4.Logger;
-using BaldursGate4.Weapon;
+﻿using GitGate4.Factory;
+using GitGate4.Logger;
+using GitGate4.Weapon;
 
-namespace BaldursGate4.Enemy
+namespace GitGate4.Enemy
 {
     public class EnemyCharacter : IEnemy
     {
         protected Random _random = new Random();
-        protected ConsoleLogger _logger = new ConsoleLogger();
+        protected IConsoleLogger _logger = new ConsoleLogger();
 
         public EnemyCharacter()
         {
@@ -80,7 +80,7 @@ namespace BaldursGate4.Enemy
         {
             var weaponsCount = Enum.GetNames(typeof(Weapons)).Length + 1;
             Weapons weaponName = (Weapons)_random.Next(1, weaponsCount);
-            WeaponCreator weaponCreator = new WeaponCreator();
+            IWeaponCreator weaponCreator = new WeaponCreator();
             WeaponDrop = weaponCreator.Create(weaponName);
         }
     }

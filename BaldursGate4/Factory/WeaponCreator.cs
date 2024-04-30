@@ -1,8 +1,8 @@
-﻿using BaldursGate4.Weapon;
+﻿using GitGate4.Weapon;
 
-namespace BaldursGate4.Factory
+namespace GitGate4.Factory
 {
-    public class WeaponCreator
+    public class WeaponCreator : IWeaponCreator
     {
         public IWeapon Create(Weapons weapon)
         {

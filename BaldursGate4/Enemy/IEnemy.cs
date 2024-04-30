@@ -1,6 +1,6 @@
-﻿using BaldursGate4.Weapon;
+﻿using GitGate4.Weapon;
 
-namespace BaldursGate4.Enemy
+namespace GitGate4.Enemy
 {
     public interface IEnemy
     {

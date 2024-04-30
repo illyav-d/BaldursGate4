@@ -1,6 +1,6 @@
-﻿using BaldursGate4.Player;
+﻿using GitGate4.Player;
 
-namespace BaldursGate4.GameControl
+namespace GitGate4.GameControl
 {
     public interface IGame
     {

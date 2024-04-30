@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BaldursGate4.Enemy
+namespace GitGate4.Enemy
 {
     public enum EnemyTypes
     {

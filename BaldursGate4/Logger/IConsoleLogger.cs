@@ -1,4 +1,4 @@
-﻿namespace BaldursGate4.Logger
+﻿namespace GitGate4.Logger
 {
     public interface IConsoleLogger
     {
