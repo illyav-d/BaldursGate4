@@ -4,9 +4,10 @@
     {
         public Elf()
         {
-            Hitpoints = dice.RollTheDices().Sum();
-            Intelligence = dice.RollTheDices().Sum();
-            Strength = dice.RollTheDices().Sum();
+            Hitpoints = dice.RollTheDices(3).Sum();
+            Intelligence = dice.RollTheDices(4).Sum();
+            Strength = dice.RollTheDices(1).Sum();
+            Weapon.PrimaryAttribute = "Intelligence";
         }
     }
 }

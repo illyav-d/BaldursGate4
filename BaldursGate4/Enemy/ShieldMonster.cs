@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BaldursGate4.Enemy
+﻿namespace BaldursGate4.Enemy
 {
-    public class ShieldMonster: EnemyCharacter
+    public class ShieldMonster : EnemyCharacter
     {
         public ShieldMonster()
         {
             Name = "Git Basher";
             Hitpoints = 100;
             MinDamage = 1;
-            MaxDamage = 2;
+            MaxDamage = 1;
         }
 
         public override void TakeDamage(int damage)

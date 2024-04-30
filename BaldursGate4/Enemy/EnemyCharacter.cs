@@ -12,7 +12,7 @@ namespace BaldursGate4.Enemy
         public EnemyCharacter()
         {
             this.GenerateWeaponDrop();
-            this.Hitpoints = 80;
+            this.Hitpoints = 70;
             this.MinDamage = 1;
             this.MaxDamage = 1;
         }
@@ -27,21 +27,22 @@ namespace BaldursGate4.Enemy
 
         public IWeapon DropWeapon()
         {
-            _logger.DisplayMessage($"Your enemy has dropped his weapon.{Environment.NewLine}You try to pick up this weapon.");
             return this.WeaponDrop;
         }
 
-        public void ChanceToDropLoot()
+        public bool ChanceToDropLoot()
         {
             int dropChance = _random.Next(1, 101);
 
             if (dropChance <= 33)
             {
-                this.DropWeapon();
+                _logger.DisplayMessage($"Your enemy has dropped his {WeaponDrop.Name}.{Environment.NewLine}You try to pick up this weapon.");
+                return true;
             }
             else
             {
                 _logger.DisplayMessage("Nothing dropped.");
+                return false;
             }
         }
 
@@ -49,7 +50,7 @@ namespace BaldursGate4.Enemy
         {
             int damage = 0;
 
-            if(this.Hitpoints > 0)
+            if (this.Hitpoints > 0)
             {
                 damage = _random.Next(this.MinDamage, this.MaxDamage + 1);
 
@@ -80,7 +81,7 @@ namespace BaldursGate4.Enemy
             var weaponsCount = Enum.GetNames(typeof(Weapons)).Length + 1;
             Weapons weaponName = (Weapons)_random.Next(1, weaponsCount);
             WeaponCreator weaponCreator = new WeaponCreator();
-            WeaponDrop = weaponCreator.createAWeapon(weaponName);
+            WeaponDrop = weaponCreator.Create(weaponName);
         }
     }
 }

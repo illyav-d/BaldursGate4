@@ -6,7 +6,7 @@ namespace BaldursGate4.Player
     {
         IWeapon Weapon { get; set; }
         void DisplayStats();
-        void PickupWeapon(IWeapon weapon, Weapons weaponName);
+        void PickupWeapon(IWeapon weapon);
         int PlayerAttack();
         void TakeDamage(int damage);
 

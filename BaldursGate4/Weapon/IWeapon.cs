@@ -8,6 +8,7 @@
         public int MinIntelligence { get; set; }
         public int Damage { get; set; }
 
+        public string Name { get; set; }
 
 
     }

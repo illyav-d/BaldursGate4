@@ -1,15 +1,13 @@
-﻿using System;
-
-namespace BaldursGate4.Enemy
+﻿namespace BaldursGate4.Enemy
 {
     public class CriticalMonster : EnemyCharacter
     {
         public CriticalMonster()
         {
             Name = "Git Mergeling";
-            Hitpoints = 60;
+            Hitpoints = 50;
             MinDamage = 1;
-            MaxDamage = 3;
+            MaxDamage = 2;
         }
 
         public override int MonsterAttack()
@@ -29,7 +27,7 @@ namespace BaldursGate4.Enemy
                 }
                 _logger.DisplayMessage($"It deals {damage} damage.");
             }
-            
+
             return damage;
         }
     }

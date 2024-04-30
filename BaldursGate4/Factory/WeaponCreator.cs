@@ -4,7 +4,7 @@ namespace BaldursGate4.Factory
 {
     public class WeaponCreator
     {
-        public IWeapon createAWeapon(Weapons weapon)
+        public IWeapon Create(Weapons weapon)
         {
             switch (weapon)
             {
@@ -20,5 +20,7 @@ namespace BaldursGate4.Factory
                     throw new ArgumentException();
             }
         }
+
+
     }
 }

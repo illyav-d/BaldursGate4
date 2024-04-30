@@ -16,6 +16,7 @@
             }
             return statTotal;
         }
+
         //Kan de rolls checken maar arrays niet leuk..
         public int rollDice()
         {

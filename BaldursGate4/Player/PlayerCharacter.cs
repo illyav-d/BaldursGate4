@@ -25,12 +25,11 @@ namespace BaldursGate4.Player
             _logger.DisplayMessage($"These are your current stats...{Environment.NewLine}{this.Hitpoints} HP{Environment.NewLine}{this.Strength} STR{Environment.NewLine}{this.Intelligence} INT");
         }
 
-        public void PickupWeapon(IWeapon weapon, Weapons weaponName)
+        public void PickupWeapon(IWeapon weapon)
         {
-
             if (this.Intelligence >= weapon.MinIntelligence && this.Strength >= weapon.MinStrength)
             {
-                _logger.DisplayMessage($"You equip the {weaponName}.");
+                _logger.DisplayMessage($"You equip the {weapon.Name}.");
                 this.Weapon = weapon;
             }
             else
@@ -42,8 +41,7 @@ namespace BaldursGate4.Player
         public int PlayerAttack()
         {
             int damage = 0;
-
-           if (this.Weapon.PrimaryAttribute == "Intelligence")
+            if (this.Weapon.PrimaryAttribute == "Intelligence")
             {
                 damage = this.Weapon.Damage * this.Intelligence;
             }
@@ -55,16 +53,13 @@ namespace BaldursGate4.Player
             {
                 _logger.DisplayMessage("Er zit een fout in PlayerAttack.");
             }
-
-           _logger.DisplayMessage($"You deal {damage} damage.");
-
+            _logger.DisplayMessage($"You deal {damage} damage.");
             return damage;
         }
 
         public virtual void TakeDamage(int damage)
         {
             this.Hitpoints -= damage;
-
             if (this.Hitpoints <= 0)
             {
                 _logger.DisplayMessage("You're dead loser. And your life sucks. Go cry in a corner like the baby you are.");

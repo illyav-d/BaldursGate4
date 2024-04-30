@@ -14,6 +14,8 @@ namespace BaldursGate4.Enemy
         void TakeDamage(int damage);
         IWeapon DropWeapon();
         void GenerateWeaponDrop();
+        public bool ChanceToDropLoot();
+
 
     }
 }

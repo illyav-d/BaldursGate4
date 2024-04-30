@@ -4,7 +4,7 @@
     {
         public Human()
         {
-            Hitpoints = dice.RollTheDices().Sum();
+            Hitpoints = dice.RollTheDices(3).Sum();
             Intelligence = dice.RollTheDices().Sum();
             Strength = dice.RollTheDices().Sum();
         }

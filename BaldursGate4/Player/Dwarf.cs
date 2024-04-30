@@ -4,7 +4,7 @@
     {
         public Dwarf()
         {
-            Hitpoints = dice.RollTheDices().Sum();
+            Hitpoints = dice.RollTheDices(3).Sum();
             Intelligence = dice.RollTheDices(1).Sum();
             Strength = dice.RollTheDices(4).Sum();
         }

@@ -1,15 +1,10 @@
 ﻿using BaldursGate4.Enemy;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BaldursGate4.Factory
 {
     public class EnemyCreator
     {
-        public IEnemy createEnemy(EnemyTypes enemy)
+        public IEnemy Create(EnemyTypes enemy)
         {
             switch (enemy)
             {
@@ -25,5 +20,7 @@ namespace BaldursGate4.Factory
                     throw new ArgumentException();
             }
         }
+
+
     }
 }

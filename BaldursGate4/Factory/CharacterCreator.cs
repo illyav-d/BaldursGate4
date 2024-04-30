@@ -4,7 +4,7 @@ namespace BaldursGate4.Factory
 {
     internal class CharacterCreator
     {
-        public IPlayer createACharacter(Races Race)
+        public IPlayer Create(Races Race)
         {
             switch (Race)
             {
