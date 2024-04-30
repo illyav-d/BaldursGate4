@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BaldursGate4.Weapon;
 
 namespace BaldursGate4.Enemy
 {
-    internal interface IEnemy
+    public interface IEnemy
     {
+        string Name { get; set; }
+        int Hitpoints { get; set; }
+        int MinDamage { get; set; }
+        int MaxDamage { get; set; }
+        IWeapon WeaponDrop { get; set; }
+
+        int MonsterAttack();
+        void TakeDamage(int damage);
+        IWeapon DropWeapon();
+        void GenerateWeaponDrop();
+
     }
 }

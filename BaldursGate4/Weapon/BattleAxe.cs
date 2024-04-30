@@ -7,7 +7,7 @@
             PrimaryAttribute = "Strength";
             MinStrength = 9;
             MinIntelligence = 1;
-            Damage = 8;
+            Damage = 4;
         }
         public string PrimaryAttribute { get; set; }
         public int MinStrength { get; set; }

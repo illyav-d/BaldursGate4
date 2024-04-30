@@ -2,11 +2,13 @@
 
 namespace BaldursGate4.Player
 {
-    internal interface IPlayer : IPlayerStats
+    public interface IPlayer : IPlayerStats
     {
         IWeapon Weapon { get; set; }
-        public void DisplayStats();
-        public void PickupWeapon(IWeapon weapon, Weapons weaponName);
+        void DisplayStats();
+        void PickupWeapon(IWeapon weapon, Weapons weaponName);
+        int PlayerAttack();
+        void TakeDamage(int damage);
 
     }
 }
