@@ -1,8 +1,11 @@
-﻿namespace GitGate4.Enemy
+﻿using GitGate4.Factory;
+using GitGate4.Logger;
+
+namespace GitGate4.Enemy
 {
     public class CriticalMonster : EnemyCharacter
     {
-        public CriticalMonster()
+        public CriticalMonster(Random random, IConsoleLogger logger, IWeaponCreator weaponCreator) : base(random, logger, weaponCreator)
         {
             Name = "Git Mergeling";
             Hitpoints = 50;
@@ -10,7 +13,7 @@
             MaxDamage = 2;
         }
 
-        public override int MonsterAttack()
+        public override int MonsterAttack(IConsoleLogger logger)
         {
             int damage = 0;
 
@@ -22,10 +25,10 @@
 
                 if (critChance <= 20)
                 {
-                    _logger.DisplayMessage($"{this.Name} does a critical hit!");
+                    logger.DisplayMessage($"{this.Name} does a critical hit!");
                     damage = damage * 2;
                 }
-                _logger.DisplayMessage($"It deals {damage} damage.");
+                logger.DisplayMessage($"It deals {damage} damage.");
             }
 
             return damage;

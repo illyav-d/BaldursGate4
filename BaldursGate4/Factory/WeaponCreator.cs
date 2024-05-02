@@ -20,7 +20,5 @@ namespace GitGate4.Factory
                     throw new ArgumentException();
             }
         }
-
-
     }
 }

@@ -1,4 +1,6 @@
-﻿using GitGate4.Player;
+﻿using GitGate4.Factory;
+using GitGate4.Logger;
+using GitGate4.Player;
 
 namespace GitGate4.GameControl
 {
@@ -7,8 +9,8 @@ namespace GitGate4.GameControl
         IPlayer Player { get; set; }
         Races RaceName { get; set; }
 
-        void CharacterCreation();
-        void EventProgression();
-        void StoryTelling();
+        void CharacterCreation(ICharacterCreator creator);
+        void EventProgression(IEnemyCreator enemyCreator, IConsoleLogger logger);
+        void StoryTelling(IConsoleLogger logger);
     }
 }

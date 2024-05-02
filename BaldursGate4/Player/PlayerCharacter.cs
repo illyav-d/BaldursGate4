@@ -4,15 +4,16 @@ using GitGate4.Weapon;
 
 namespace GitGate4.Player
 {
-    public class PlayerCharacter : IPlayer
+    public abstract class PlayerCharacter : IPlayer
     {
-        protected IDice dice;
-        protected IConsoleLogger _logger = new ConsoleLogger();
+        protected IDice _dice;
+        protected IConsoleLogger _logger;
 
-        public PlayerCharacter()
+        public PlayerCharacter(IDice dice, IConsoleLogger logger, IWeapon dagger)
         {
-            Weapon = new Dagger();
-            dice = new Dice.Dice();
+            _dice = dice;
+            _logger = logger;
+            Weapon = dagger;
         }
 
         public int Hitpoints { get; set; }
@@ -20,21 +21,21 @@ namespace GitGate4.Player
         public int Strength { get; set; }
         public IWeapon Weapon { get; set; }
 
-        public void DisplayStats()
+        public void DisplayStats(IConsoleLogger logger)
         {
-            _logger.DisplayMessage($"These are your current stats...{Environment.NewLine}{this.Hitpoints} HP{Environment.NewLine}{this.Strength} STR{Environment.NewLine}{this.Intelligence} INT");
+            logger.DisplayMessage($"These are your current stats...{Environment.NewLine}{this.Hitpoints} HP{Environment.NewLine}{this.Strength} STR{Environment.NewLine}{this.Intelligence} INT");
         }
 
-        public void PickupWeapon(IWeapon weapon)
+        public void PickupWeapon(IWeapon weapon, IConsoleLogger logger)
         {
             if (this.Intelligence >= weapon.MinIntelligence && this.Strength >= weapon.MinStrength)
             {
-                _logger.DisplayMessage($"You equip the {weapon.Name}.");
+                logger.DisplayMessage($"You equip the {weapon.Name}.");
                 this.Weapon = weapon;
             }
             else
             {
-                _logger.DisplayMessage($"You try to equip the weapon but you are either too dumb or weak. You keep your current weapon.");
+                logger.DisplayMessage($"You try to equip the weapon but you are either too dumb or weak. You keep your current weapon.");
             }
         }
 

@@ -1,6 +1,6 @@
 ﻿namespace GitGate4.Weapon
 {
-    internal class Dagger : IWeapon
+    public class Dagger : IWeapon
     {
         public Dagger()
         {

@@ -1,4 +1,8 @@
-﻿using GitGate4.GameControl;
+﻿using GitGate4.Dice;
+using GitGate4.Factory;
+using GitGate4.GameControl;
+using GitGate4.Logger;
+using GitGate4.Weapon;
 
 namespace GitGate4
 {
@@ -7,16 +11,23 @@ namespace GitGate4
         static void Main(string[] args)
         {
             //Variables
-            IGame game = new Game();
+            Random random = new Random();
+            IWeapon dagger = new Dagger();
+            IDice dice = new CustomDice(random);
+            IConsoleLogger logger = new ConsoleLogger();
+            IWeaponCreator weaponCreator = new WeaponCreator();
+            IEnemyCreator enemyCreator = new EnemyCreator(logger, random, weaponCreator);
+            ICharacterCreator characterCreator = new CharacterCreator(dice, logger, dagger);
+            IGame game = new Game(random, logger, characterCreator, enemyCreator);
 
             // Race + Char
-            game.CharacterCreation();
+            game.CharacterCreation(characterCreator);
 
             //Display
-            game.StoryTelling();
+            game.StoryTelling(logger);
 
             //Progression
-            game.EventProgression();
+            game.EventProgression(enemyCreator, logger);
         }
     }
 }

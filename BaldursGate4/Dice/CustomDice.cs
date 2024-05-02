@@ -1,14 +1,21 @@
 ﻿namespace GitGate4.Dice
 {
-    public class Dice : IDice
+    public class CustomDice : IDice
     {
+
+        public CustomDice(Random random)
+        {
+            myRandom = random;
+        }
         public Random myRandom { get; set; }
 
+
+
         //Kan de rolls niet checken
-        public int RollStat(int diceRolls)
+        public int RollStat(int diceRolls, Random myRandom)
         {
             int statTotal = 0;
-            myRandom = new Random();
+
 
             for (int i = 0; i < diceRolls; i++)
             {
@@ -18,9 +25,8 @@
         }
 
         //Kan de rolls checken maar arrays niet leuk..
-        public int rollDice()
+        public int rollDice(Random random)
         {
-            Random random = new Random();
             return random.Next(1, 7);
         }
 
@@ -30,7 +36,7 @@
 
             for (int i = 0; i < amount; i++)
             {
-                result[i] = rollDice();
+                result[i] = rollDice(myRandom);
             }
 
             return result;

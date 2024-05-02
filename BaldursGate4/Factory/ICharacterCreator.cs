@@ -2,7 +2,7 @@
 
 namespace GitGate4.Factory
 {
-    internal interface ICharacterCreator
+    public interface ICharacterCreator
     {
         IPlayer Create(Races Race);
     }
