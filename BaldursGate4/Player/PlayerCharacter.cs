@@ -9,6 +9,11 @@ namespace GitGate4.Player
         protected IDice _dice;
         protected IConsoleLogger _logger;
 
+        public PlayerCharacter()
+        {
+            
+        }
+
         public PlayerCharacter(IDice dice, IConsoleLogger logger, IWeapon dagger)
         {
             _dice = dice;
