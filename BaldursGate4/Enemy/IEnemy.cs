@@ -1,6 +1,4 @@
-﻿using GitGate4.Factory;
-using GitGate4.Logger;
-using GitGate4.Weapon;
+﻿using GitGate4.Weapon;
 
 namespace GitGate4.Enemy
 {
@@ -12,11 +10,11 @@ namespace GitGate4.Enemy
         int MaxDamage { get; set; }
         IWeapon WeaponDrop { get; set; }
 
-        int MonsterAttack(IConsoleLogger logger);
-        void TakeDamage(int damage, IConsoleLogger logger);
+        int MonsterAttack();
+        void TakeDamage(int damage);
         IWeapon DropWeapon();
-        void GenerateWeaponDrop(IWeaponCreator weaponCreator);
-        public bool ChanceToDropLoot(IConsoleLogger logger);
+        void GenerateWeaponDrop();
+        public bool ChanceToDropLoot();
 
 
     }

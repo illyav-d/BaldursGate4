@@ -2,32 +2,31 @@
 {
     public class CustomDice : IDice
     {
-
-        public CustomDice(Random random)
+        Random _random = new Random();
+        public CustomDice()
         {
-            myRandom = random;
+
         }
-        public Random myRandom { get; set; }
 
 
 
         //Kan de rolls niet checken
-        public int RollStat(int diceRolls, Random myRandom)
+        public int RollStat(int diceRolls)
         {
             int statTotal = 0;
 
 
             for (int i = 0; i < diceRolls; i++)
             {
-                statTotal += myRandom.Next(1, 7);
+                statTotal += _random.Next(1, 7);
             }
             return statTotal;
         }
 
         //Kan de rolls checken maar arrays niet leuk..
-        public int rollDice(Random random)
+        public int rollDice()
         {
-            return random.Next(1, 7);
+            return _random.Next(1, 7);
         }
 
         public int[] RollTheDices(int amount = 2)
@@ -36,7 +35,7 @@
 
             for (int i = 0; i < amount; i++)
             {
-                result[i] = rollDice(myRandom);
+                result[i] = rollDice();
             }
 
             return result;

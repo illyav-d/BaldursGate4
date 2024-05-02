@@ -13,7 +13,7 @@ namespace GitGate4.Enemy
             MaxDamage = 2;
         }
 
-        public override int MonsterAttack(IConsoleLogger logger)
+        public override int MonsterAttack()
         {
             int damage = 0;
 
@@ -25,10 +25,10 @@ namespace GitGate4.Enemy
 
                 if (critChance <= 20)
                 {
-                    logger.DisplayMessage($"{this.Name} does a critical hit!");
+                    _logger.DisplayMessage($"{this.Name} does a critical hit!");
                     damage = damage * 2;
                 }
-                logger.DisplayMessage($"It deals {damage} damage.");
+                _logger.DisplayMessage($"It deals {damage} damage.");
             }
 
             return damage;

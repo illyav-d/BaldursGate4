@@ -8,13 +8,14 @@ namespace GitGate4.GameControl
     public class Game : IGame
     {
         //fields
-        Random _random;
+        Random _random = new Random();
         IConsoleLogger _logger;
         ICharacterCreator _characterCreator;
         IEnemyCreator _enemyCreator;
-        public Game(Random random, IConsoleLogger logger, ICharacterCreator characterCreator, IEnemyCreator enemyCreator)
+
+        public Game(IConsoleLogger logger, ICharacterCreator characterCreator, IEnemyCreator enemyCreator)
         {
-            _random = random;
+
             _logger = logger;
             _characterCreator = characterCreator;
             _enemyCreator = enemyCreator;
@@ -24,22 +25,22 @@ namespace GitGate4.GameControl
         public IEnemy Enemy { get; set; }
         public Races RaceName { get; set; }
         //Methods
-        public void CharacterCreation(ICharacterCreator creator)
+        public void CharacterCreation()
         {
             //TODO: Vraag Parameter in methode + Iplayer in constr? => Constructor/Fields beter gebruiken (als klasse het voorziet, gebruik dat)
             var racesCount = Enum.GetNames(typeof(Races)).Length + 1;
             RaceName = (Races)_random.Next(1, racesCount);
-            Player = creator.Create(RaceName);
+            Player = _characterCreator.Create(RaceName);
         }
-        public void StoryTelling(IConsoleLogger logger)
+        public void StoryTelling()
         {
-            logger.DisplayMessage("Our journey begins in the Darkest Dungeons of GIT, you only have a dagger and a gitbash manual");
-            logger.DisplayMessage($"You are a {RaceName}.");
+            _logger.DisplayMessage("Our journey begins in the Darkest Dungeons of GIT, you only have a dagger and a gitbash manual");
+            _logger.DisplayMessage($"You are a {RaceName}.");
             Console.ReadLine();
-            Player.DisplayStats(logger);
+            Player.DisplayStats();
             Console.ReadLine();
         }
-        public void EventProgression(IEnemyCreator enemyCreator, IConsoleLogger logger)
+        public void EventProgression()
         {
             int totalDamage = 0;
             int killCount = 0;
@@ -47,9 +48,9 @@ namespace GitGate4.GameControl
             {
                 var monsterCount = Enum.GetNames(typeof(EnemyTypes)).Length + 1;
                 EnemyTypes enemyName = (EnemyTypes)_random.Next(1, monsterCount);
-                Enemy = enemyCreator.Create(enemyName);
+                Enemy = _enemyCreator.Create(enemyName);
 
-                logger.DisplayMessage($"You encounter a wild {Enemy.Name}, it has {Enemy.Hitpoints} hitpoints.");
+                _logger.DisplayMessage($"You encounter a wild {Enemy.Name}, it has {Enemy.Hitpoints} hitpoints.");
                 Console.ReadLine();
 
                 while (Enemy.Hitpoints > 0 && Player.Hitpoints > 0)
@@ -60,18 +61,18 @@ namespace GitGate4.GameControl
 
                     playerDamage = Player.PlayerAttack();
                     totalDamage += playerDamage;
-                    Enemy.TakeDamage(playerDamage, logger);
+                    Enemy.TakeDamage(playerDamage);
                     Console.ReadLine();
 
-                    monsterDamage = Enemy.MonsterAttack(logger);
+                    monsterDamage = Enemy.MonsterAttack();
                     Player.TakeDamage(monsterDamage);
                     Console.ReadLine();
                     if (Enemy.Hitpoints <= 0)
                     {
                         killCount++;
-                        if (Enemy.ChanceToDropLoot(logger))
+                        if (Enemy.ChanceToDropLoot())
                         {
-                            Player.PickupWeapon(Enemy.DropWeapon(), logger);
+                            Player.PickupWeapon(Enemy.DropWeapon());
                         }
                     }
 
@@ -80,9 +81,9 @@ namespace GitGate4.GameControl
                 Console.Clear();
             }
             //Had naar een game over functie kunnen gaan
-            _logger.DisplayMessage("The story ends, GIT always wins.");
-            _logger.DisplayMessage($"Total damage dealt: {totalDamage}.");
-            _logger.DisplayMessage($"Enemies killed: {killCount}.");
+            this._logger.DisplayMessage("The story ends, GIT always wins.");
+            this._logger.DisplayMessage($"Total damage dealt: {totalDamage}.");
+            this._logger.DisplayMessage($"Enemies killed: {killCount}.");
             Console.ReadLine();
 
         }

@@ -18,7 +18,7 @@ namespace GitGate4.Enemy
             _random = random;
             _logger = logger;
             _weaponCreator = weaponCreator;
-            this.GenerateWeaponDrop(_weaponCreator);
+            this.GenerateWeaponDrop();
         }
 
         public string Name { get; set; }
@@ -34,23 +34,23 @@ namespace GitGate4.Enemy
             return this.WeaponDrop;
         }
 
-        public bool ChanceToDropLoot(IConsoleLogger logger)
+        public bool ChanceToDropLoot()
         {
             int dropChance = _random.Next(1, 101);
 
             if (dropChance <= 33)
             {
-                logger.DisplayMessage($"Your enemy has dropped his {WeaponDrop.Name}.{Environment.NewLine}You try to pick up this weapon.");
+                _logger.DisplayMessage($"Your enemy has dropped his {WeaponDrop.Name}.{Environment.NewLine}You try to pick up this weapon.");
                 return true;
             }
             else
             {
-                logger.DisplayMessage("Nothing dropped.");
+                _logger.DisplayMessage("Nothing dropped.");
                 return false;
             }
         }
 
-        public virtual int MonsterAttack(IConsoleLogger logger)
+        public virtual int MonsterAttack()
         {
             int damage = 0;
 
@@ -58,34 +58,34 @@ namespace GitGate4.Enemy
             {
                 damage = _random.Next(this.MinDamage, this.MaxDamage + 1);
 
-                logger.DisplayMessage($"The enemy deals {damage} damage.");
+                _logger.DisplayMessage($"The enemy deals {damage} damage.");
             }
 
             return damage;
         }
 
-        public virtual void TakeDamage(int damage, IConsoleLogger logger)
+        public virtual void TakeDamage(int damage)
         {
             this.Hitpoints -= damage;
-            logger.DisplayMessage($"The enemy takes {damage} damage.");
+            _logger.DisplayMessage($"The enemy takes {damage} damage.");
 
             if (this.Hitpoints <= 0)
             {
-                logger.DisplayMessage($"The enemy {this.Name} dies.");
+                _logger.DisplayMessage($"The enemy {this.Name} dies.");
                 this.DropWeapon();
             }
             else
             {
-                logger.DisplayMessage($"The enemy has {this.Hitpoints} hitpoints left.");
+                _logger.DisplayMessage($"The enemy has {this.Hitpoints} hitpoints left.");
             }
         }
 
-        public void GenerateWeaponDrop(IWeaponCreator weaponCreator)
+        public void GenerateWeaponDrop()
         {
             var weaponsCount = Enum.GetNames(typeof(Weapons)).Length + 1;
             Weapons weaponName = (Weapons)_random.Next(1, weaponsCount);
 
-            WeaponDrop = weaponCreator.Create(weaponName);
+            WeaponDrop = _weaponCreator.Create(weaponName);
         }
     }
 }

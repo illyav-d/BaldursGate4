@@ -13,27 +13,27 @@ namespace GitGate4.Enemy
             MaxDamage = 1;
         }
 
-        public override void TakeDamage(int damage, IConsoleLogger logger)
+        public override void TakeDamage(int damage)
         {
             int blockChance = _random.Next(1, 101);
 
             if (blockChance <= 25)
             {
-                logger.DisplayMessage($"{this.Name} blocks some of your damage!");
+                _logger.DisplayMessage($"{this.Name} blocks some of your damage!");
                 damage -= 2;
             }
 
             this.Hitpoints -= damage;
-            _logger.DisplayMessage($"The enemy takes {damage} damage.");
+            base._logger.DisplayMessage($"The enemy takes {damage} damage.");
 
             if (this.Hitpoints <= 0)
             {
-                logger.DisplayMessage("The enemy " + this.Name + " dies.");
+                _logger.DisplayMessage("The enemy " + this.Name + " dies.");
                 this.DropWeapon();
             }
             else
             {
-                logger.DisplayMessage($"The enemy has {this.Hitpoints} hitpoints left.");
+                _logger.DisplayMessage($"The enemy has {this.Hitpoints} hitpoints left.");
             }
         }
     }

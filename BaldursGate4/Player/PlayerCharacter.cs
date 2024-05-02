@@ -21,21 +21,21 @@ namespace GitGate4.Player
         public int Strength { get; set; }
         public IWeapon Weapon { get; set; }
 
-        public void DisplayStats(IConsoleLogger logger)
+        public void DisplayStats()
         {
-            logger.DisplayMessage($"These are your current stats...{Environment.NewLine}{this.Hitpoints} HP{Environment.NewLine}{this.Strength} STR{Environment.NewLine}{this.Intelligence} INT");
+            _logger.DisplayMessage($"These are your current stats...{Environment.NewLine}{this.Hitpoints} HP{Environment.NewLine}{this.Strength} STR{Environment.NewLine}{this.Intelligence} INT");
         }
 
-        public void PickupWeapon(IWeapon weapon, IConsoleLogger logger)
+        public void PickupWeapon(IWeapon weapon)
         {
             if (this.Intelligence >= weapon.MinIntelligence && this.Strength >= weapon.MinStrength)
             {
-                logger.DisplayMessage($"You equip the {weapon.Name}.");
+                _logger.DisplayMessage($"You equip the {weapon.Name}.");
                 this.Weapon = weapon;
             }
             else
             {
-                logger.DisplayMessage($"You try to equip the weapon but you are either too dumb or weak. You keep your current weapon.");
+                _logger.DisplayMessage($"You try to equip the weapon but you are either too dumb or weak. You keep your current weapon.");
             }
         }
 

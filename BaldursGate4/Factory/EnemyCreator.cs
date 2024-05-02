@@ -6,12 +6,11 @@ namespace GitGate4.Factory
     public class EnemyCreator : IEnemyCreator
     {
         IConsoleLogger _logger;
-        Random _random;
+        Random _random = new Random();
         IWeaponCreator _weaponCreator;
-        public EnemyCreator(IConsoleLogger logger, Random random, IWeaponCreator weaponCreator)
+        public EnemyCreator(IConsoleLogger logger, IWeaponCreator weaponCreator)
         {
             _logger = logger;
-            _random = random;
             _weaponCreator = weaponCreator;
 
         }
